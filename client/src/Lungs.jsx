@@ -180,7 +180,7 @@ function Lungs() {
   return (
     <div className="container mx-auto mt-10 p-5 bg-white rounded-lg shadow-lg">
       <h1 className="text-3xl text-center mb-5 text-gray-800">
-        Lungs Disease Prediction 🧡
+        Lungs Disease Prediction
       </h1>
       <Link
         to="/"

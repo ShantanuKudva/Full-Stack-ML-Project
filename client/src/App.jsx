@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Landing from "./landing";
-import Heart from "./heart";
-import Lungs from "./lungs";
+import Landing from "./Landing";
+import Heart from "./Heart";
+import Lungs from "./Lungs";
 
 function App() {
   return (

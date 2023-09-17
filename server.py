@@ -1,15 +1,21 @@
 from flask import Flask, request, jsonify
+from flask.helpers import send_from_directory
 import pickle
 import numpy as np
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../dist', static_url_path='/')    
 CORS(app)  # Enable CORS for all routes
 
 # Load the saved model
 loaded_model = pickle.load(open("./heart_model.sav", "rb"))
 
 @app.route("/", methods=["GET"])
+@cross_origin()
+
+def serve():
+    return send_from_directory(app.static_folder, 'index.html')
+
 def index():
     return jsonify({"message": "Welcome to the Heart Disease Prediction API"})
 
@@ -19,6 +25,8 @@ def printResult():
 
 
 @app.route("/heart", methods=["POST"])
+@cross_origin()
+
 def predict():
     try:
         # Get the input data from the request
@@ -64,6 +72,7 @@ def predict():
 
 
 @app.route("/lungs", methods=["POST"])
+@cross_origin()
 def predict_lung_cancer():
     try:
         # Get the input data from the request as a JSON
